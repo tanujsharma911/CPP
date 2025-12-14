@@ -1,0 +1,1 @@
+{"name":"Local: C+=","url":"/Users/tanujsharma/Developer/cpp/codeforces/C+=.cpp","tests":[{"id":1761893935799,"input":"2\n1 2 3\n5 4 100","output":"2\n7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/tanujsharma/Developer/cpp/codeforces/C+=.cpp","group":"local","local":true}
