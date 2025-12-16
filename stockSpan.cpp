@@ -10,7 +10,7 @@ int main()
 
     int n = price.size();
     vector<int> span(n, 0);
-    stack<int> prevhigh;
+    stack<int> prevhigh; // The stack always keeps indices of previous higher prices.
 
     for (int i = 0; i < n; i++)
     {
@@ -18,7 +18,8 @@ int main()
         {
             prevhigh.pop();
         }
-        if(prevhigh.empty()){
+        if (prevhigh.empty())
+        {
             span[i] = i + 1;
         }
         else
@@ -33,5 +34,14 @@ int main()
         cout << span[i] << " ";
     }
 
+    cout << endl;
     return 0;
 }
+
+/*
+Stock Span Problem
+
+For each day, stock span =
+number of consecutive days (including today)
+for which the price was less than or equal to today’s price.
+*/

@@ -7,10 +7,6 @@ class MinStack
 public:
     stack<pair<int, int>> s;
 
-    MinStack()
-    {
-    }
-
     void push(int val)
     {
         if (s.empty())
@@ -48,14 +44,17 @@ public:
 
 int main()
 {
-    MinStack s;
+    MinStack s; // Give minimum element below in stack on every level
 
-    s.pop();
     s.push(5);
     s.push(6);
     s.push(-6);
     s.push(-1);
-    cout << s.top();
+    cout << s.top() << endl;
+    cout << s.getMin() << endl;
+    s.pop();
+    s.pop();
+    cout << s.getMin() << endl;
 
     return 0;
 }
