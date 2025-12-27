@@ -6,11 +6,11 @@ int cntSubsetSumToK(int i, vector<int> &nums, int k)
 {
     int n = nums.size();
 
-    if (k == 0)
-        return 1;
     if (i == 0)
     {
-        return nums[i] == k;
+        if(k == 0 && nums[0] == k) return 2;
+        if(k == 0 || nums[0] == k) return 1;
+        return 0;
     }
 
     int nonpick = cntSubsetSumToK(i - 1, nums, k);
@@ -32,30 +32,30 @@ int main()
 
     vector<int> memo(k + 1, 0);
 
-    memo[0] = 1;
+    // memo[0] = 1;
 
-    if (nums[0] <= k)
-        memo[nums[0]] = 1;
+    // if (nums[0] <= k)
+    //     memo[nums[0]] = 1;
 
-    for (int i = 1; i < n; i++)
-    {
-        vector<int> curr(k + 1, 0);
-        curr[0] = 1;
-        for (int target = 0; target <= k; target++)
-        {
+    // for (int i = 1; i < n; i++)
+    // {
+    //     vector<int> curr(k + 1, 0);
+    //     curr[0] = 1;
+    //     for (int target = 0; target <= k; target++)
+    //     {
 
-            int nonpick = memo[target];
-            int pick = 0;
+    //         int nonpick = memo[target];
+    //         int pick = 0;
 
-            if (target >= nums[i])
-                pick = memo[target - nums[i]];
+    //         if (target >= nums[i])
+    //             pick = memo[target - nums[i]];
 
-            curr[target] = nonpick + pick;
-        }
-        memo = curr;
-    }
+    //         curr[target] = nonpick + pick;
+    //     }
+    //     memo = curr;
+    // }
 
-    cout << memo[k] << endl;
+    cout << cntSubsetSumToK(n - 1, nums, k) << endl;
 
     return 0;
 }
