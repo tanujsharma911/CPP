@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool divisible(const string &s, int k)
+bool divisible(const string &s, int k) // Modulo expansion rule
 {
     int rem = 0;
     for (char c : s)
