@@ -1,3 +1,14 @@
+/*
+84. Largest Rectangle in Histogram
+Link:- https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+
+Given an array of integers heights representing the histogram's bar height where 
+the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+revised: 1
+
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -29,13 +40,6 @@ int largestRectangleArea(vector<int> heights)
         nextSmallerStack.push(i);
     }
 
-    cout << "Next smaller: ";
-    for (int i = 0; i < heights.size(); i++)
-    {
-        cout << nextSmaller[i] << " ";
-    }
-    cout << endl;
-
     for (int i = 0; i < heights.size(); i++)
     { // finding prev smaller element index
         while (!prevSmallerStack.empty() && heights[prevSmallerStack.top()] >= heights[i])
@@ -54,12 +58,6 @@ int largestRectangleArea(vector<int> heights)
 
         prevSmallerStack.push(i);
     }
-    cout << "Prev smaller: ";
-    for (int i = 0; i < heights.size(); i++)
-    {
-        cout << prevSmaller[i] << " ";
-    }
-    cout << endl;
 
     int ans = 0;
 
@@ -69,25 +67,17 @@ int largestRectangleArea(vector<int> heights)
         int right = (nextSmaller[i] == -1) ? heights.size() : nextSmaller[i];
 
         int currSum = heights[i] * (right - left - 1);
-        cout << currSum << " ";
         ans = max(ans, currSum);
     }
-    cout << endl;
 
     return ans;
 }
 
 int main()
 {
-    vector<int> v = {5, 4, 3, 2, 1};
-    cout << "Q: ";
-    for (int i = 0; i < v.size(); i++)
-    {
-        cout << v[i] << " ";
-    }
-    cout << endl;
+    vector<int> v = {2, 1, 5, 6, 2, 3};
 
-    cout << "Ans: " << largestRectangleArea(v);
+    cout << "Ans: " << largestRectangleArea(v) << endl;
 
     return 0;
 }

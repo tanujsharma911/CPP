@@ -1,28 +1,8 @@
+// Check if at least ONE subset exists whose sum is k
+
 #include <iostream>
 
-using namespace std;
-
-// int subsetSumToK(vector<int> &nums, int k, int i, vector<vector<int>> &memo)
-// {
-//     int n = nums.size();
-
-//     if(k == 0) return 1;
-//     if (i == n)
-//     {
-//         return k == 0;
-//     }
-
-//     if (memo[i][k] != -1)
-//         return memo[i][k];
-
-//     int nonpicked = subsetSumToK(nums, k, i + 1, memo);
-
-//     int picked = subsetSumToK(nums, k - nums[i], i + 1, memo);
-
-//     memo[i][k] = picked || nonpicked;
-
-//     return picked || nonpicked;
-// }
+    using namespace std;
 
 int subsetSumToK(vector<int> &nums, int k)
 {
