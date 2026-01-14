@@ -4,17 +4,17 @@ using namespace std;
 
 int main()
 {
-    char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+    vector<char> letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
     char target;
 
-    int start = 0, end = 4, mid, ans = -1;
+    int start = 0, end = letters.size() - 1, mid, ans = -1;
 
     cout << "Search letter: ";
     cin >> target;
 
-    while (start < end)
+    while (start <= end)
     {
-        mid = end + (start - end) / 2;
+        mid = end - (end - start) / 2;
 
         if (letters[mid] == target)
         {
