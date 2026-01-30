@@ -1,5 +1,5 @@
 /*
- * 1092. Shortest Common Supersequence
+ * 1092. Shortest Common Supersequence (Hard)
  *
  * Given two strings str1 and str2, return the shortest string that has
  * both str1 and str2 as subsequences. If there are multiple valid strings,
