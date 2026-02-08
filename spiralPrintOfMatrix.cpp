@@ -14,7 +14,6 @@ int main()
         {17, 30, 29, 28, 27, 10},
         {16, 15, 14, 13, 12, 11}};
 
-    int y = 0;
     for (int x = 0; x <= m / 2; x++)
     {
         for (int i = x; i < m - x; i++) // right
