@@ -1,5 +1,5 @@
 /*
-Boolean Parenthesization / Counter number of ways to evaluate boolean expression to true
+Boolean Parenthesization / Counter number of ways to evaluate boolean expression to true (Hard)
 
 You are given a boolean expression s containing
 'T' ---> true
