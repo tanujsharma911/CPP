@@ -2,39 +2,76 @@
 
 using namespace std;
 
-int main()
-{
-    const int n = 6, m = 6;
+vector<int> spiralOrder(vector<vector<int>>& g) {
+    int n = g[0].size() * g.size();
+    int left = -1;
+    int top = -1;
+    int right = g[0].size();
+    int bottom = g.size();
 
-    int g[6][6] = {
-        {1, 2, 3, 4, 5, 6},
-        {20, 21, 22, 23, 24, 7},
-        {19, 32, 33, 34, 25, 8},
-        {18, 31, 36, 35, 26, 9},
-        {17, 30, 29, 28, 27, 10},
-        {16, 15, 14, 13, 12, 11}};
+    int curr_x = 0, curr_y = 0;
 
-    for (int x = 0; x <= m / 2; x++)
+    vector<int> ans;
+
+    while (ans.size() < n)
     {
-        for (int i = x; i < m - x; i++) // right
+        while (curr_x < right) // right
         {
-            cout << g[x][i] << " ";
+            // cout << g[x][i] << " ";
+            ans.push_back(g[curr_y][curr_x]);
+            curr_x++;
         }
-        for (int i = x + 1; i < n - x; i++) // down
+        top = curr_y;
+
+        curr_x--;
+        curr_y++;
+
+        if(ans.size() >= n) break;
+
+        while (curr_y < bottom) // down
         {
-            cout << g[i][m - 1 - x] << " ";
+            // cout << g[i][m - 1 - x] << " ";
+            ans.push_back(g[curr_y][curr_x]);
+            curr_y++;
         }
-        for (int i = m - 2 - x; i >= 0 + x; i--) // left
+        right = curr_x;
+
+        curr_y--;
+        curr_x--;
+
+        if(ans.size() >= n) break;
+
+        while (curr_x > left) // left
         {
-            cout << g[n - 1 - x][i] << " ";
+            // cout << g[n - 1 - x][i] << " ";
+            ans.push_back(g[curr_y][curr_x]);
+            curr_x--;
         }
-        for (int i = n - 2 - x; i > x; i--) // up
+        bottom = curr_y;
+
+        curr_x++;
+        curr_y--;
+
+        if(ans.size() >= n) break;
+
+        while (curr_y > top) // up
         {
-            cout << g[i][x] << " ";
+            // cout << g[i][x] << " ";
+            ans.push_back(g[curr_y][curr_x]);
+            curr_y--;
         }
+        left = curr_x;
+
+        curr_y++;
+        curr_x++;
     }
 
-    cout << endl;
+    return ans;
+}
+
+int main()
+{
+
 
     return 0;
 }
