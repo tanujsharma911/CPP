@@ -9,7 +9,7 @@ void print_shortest_path(int start, int end, vector<vector<vector<int>>> &adj, v
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push({0, start});
     dist[start] = 0;
-    parent[start] = 0; // Parent of starnt will be itself
+    parent[start] = 0; // Parent of start will be itself
 
     while (!pq.empty())
     {
