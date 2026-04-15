@@ -1,4 +1,4 @@
-// 53. Maximum Subarray
+// 53. Maximum Subarray Sum or Kadane's Algorithm
 
 #include <iostream>
 
