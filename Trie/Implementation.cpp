@@ -1,3 +1,7 @@
+/*
+Better than hash map because it uses less space.
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -103,6 +107,27 @@ public:
     bool remove(string word)
     {
         return removeUtil(root, word);
+    }
+
+    bool startsWithUtil(TrieNode *root, string word)
+    {
+        if (word.length() == 0)
+        {
+            return true;
+        }
+
+        int index = word[0] - 'a';
+
+        if (root->childrens[index] != NULL)
+        {
+            return startsWithUtil(root->childrens[index], word.substr(1));
+        }
+
+        return false;
+    }
+    bool startsWith(string prefix)
+    {
+        return startsWithUtil(root, prefix);
     }
 };
 
