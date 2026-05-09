@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<int> Merge(vector<int> firstHalf, vector<int> secondHalf)
+vector<int> merge(vector<int> firstHalf, vector<int> secondHalf)
 {
     vector<int> temp = {};
     int i = 0;
@@ -35,7 +35,7 @@ vector<int> Merge(vector<int> firstHalf, vector<int> secondHalf)
 
     return temp;
 }
-vector<int> sortArray(vector<int> &nums)
+vector<int> mergeSort(vector<int> &nums)
 {
     if (nums.size() == 1)
         return nums;
@@ -45,10 +45,10 @@ vector<int> sortArray(vector<int> &nums)
     vector<int> firstHalf(nums.begin(), nums.begin() + mid);
     vector<int> secondHalf(nums.begin() + mid, nums.end());
 
-    firstHalf = sortArray(firstHalf);
-    secondHalf = sortArray(secondHalf);
+    firstHalf = mergeSort(firstHalf);
+    secondHalf = mergeSort(secondHalf);
 
-    vector<int> ans = Merge(firstHalf, secondHalf);
+    vector<int> ans = merge(firstHalf, secondHalf);
     return ans;
 }
 
@@ -57,7 +57,7 @@ int main()
     vector<int> arr = {
         54, 32, 78, 12, 45, 90};
 
-    arr = sortArray(arr);
+    arr = mergeSort(arr);
 
     for(int val : arr){
         cout << val << " ";
