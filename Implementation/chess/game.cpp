@@ -32,8 +32,8 @@ void printBoard(Board &board) {
 
         for (int c = 0; c < 8; c++) {
             Square square = Square(r * 8 + c);
-            PieceType piece = board.at<PieceType>(square);
-            Color color = board.at<Piece>(square).color();
+            // PieceType piece = board.at<PieceType>(square);
+            // Color color = board.at<Piece>(square).color();
 
             if (square.is_dark()) {
                 cout << BG_GRAY_40;
