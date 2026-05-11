@@ -1,40 +1,73 @@
 #include <iostream>
 using namespace std;
 
-void nextPermutation(vector<int>& nums) {
+void nextPermutation(vector<int> &nums)
+{
     int n = nums.size();
 
-    int bp = -1;
+    if (n <= 1)
+        return;
 
-    for(int i = n - 2; i >= 0; i--){
-        if(nums[i] < nums[i + 1]){
-            bp = i;
+    bool ascending = true;
+    bool descending = true;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (nums[i - 1] >= nums[i])
+            ascending = false;
+        if (nums[i - 1] < nums[i])
+            descending = false;
+    }
+
+    if (ascending)
+    {
+        swap(nums[n - 1], nums[n - 2]);
+        return;
+    }
+    if (descending)
+    {
+        sort(nums.begin(), nums.end());
+        return;
+    }
+
+    int dip = n - 2;
+
+    for (int i = n - 2; i >= 0; i--)
+    {
+        if (nums[i] < nums[i + 1])
+        {
+            dip = i;
             break;
         }
     }
 
-    if(bp == -1) {
-        reverse(nums.begin(), nums.end());
-        return;
+    int next_greater = n - 1;
+
+    for (int i = n - 1; i > dip; i--)
+    {
+        if (nums[i] > nums[dip])
+        {
+            next_greater = i;
+            break;
+        }
     }
 
-    int next_greater = n - 1 - (int) (upper_bound(nums.rbegin(), nums.rend() - bp - 1, nums[bp]) - nums.rbegin());
+    swap(nums[dip], nums[next_greater]);
 
-    swap(nums[bp], nums[next_greater]);
-
-    sort(nums.begin() + bp + 1, nums.end());
+    sort(nums.begin() + dip + 1, nums.end());
 }
 
 int main()
 {
     vector<int> nums = {1, 2, 3};
-    
+
     nextPermutation(nums);
-    
-    for(auto &num: nums){
+
+    for (auto &num : nums)
+    {
         cout << num << ", ";
     }
-    
+
     cout << endl;
     return 0;
 }
