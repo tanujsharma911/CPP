@@ -1,7 +1,3 @@
-$!n = \sum_{r=2}^{n} (-1) * (n! / r!)$
-
-
-$!n = (n-1) * [ !(n-2) + !(n-1)]$
 # C++ Programming Repository
 
 This repository serves as a personal collection of my coding journey, focusing on problem-solving, core programming concepts & implementations in c/c++.
