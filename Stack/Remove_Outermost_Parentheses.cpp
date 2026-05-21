@@ -2,7 +2,6 @@
 
 1021. Remove Outermost Parentheses
 
-
 Example 2:
 
 Input: s = "()(()(()))"
