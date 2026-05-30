@@ -1,3 +1,5 @@
+// Range Min Max Queries
+
 #include <iostream>
 #include <numeric>
 #include <algorithm>
