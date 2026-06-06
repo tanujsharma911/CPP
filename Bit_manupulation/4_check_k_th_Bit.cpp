@@ -17,21 +17,7 @@ Explanation: Binary representation of 4 is 100, in which 2nd index bit from LSB 
 
 using namespace std;
 
-int convertToBinaryInt(int n)
-{
-    string ans = "";
-
-    while (n)
-    {
-        ans = to_string(n % 2) + ans;
-
-        n = n / 2;
-    }
-
-    return stoi(ans);
-}
-
-bool checkKthBit(int n, int k)
+bool checkKthBit1(int n, int k)
 {
     int bin = 1;
 
@@ -40,9 +26,14 @@ bool checkKthBit(int n, int k)
     return (n & bin) != 0;
 }
 
+bool checkKthBit(int n, int k)
+{
+    return (n >> k) & 1;
+}
+
 int main()
 {
-    cout << checkKthBit(500, 3);
+    cout << checkKthBit1(500, 3);
 
     cout << endl;
     return 0;
