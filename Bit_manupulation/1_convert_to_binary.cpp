@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string convertToBinary(int n)
+string convertToBinaryStr(int n)
 {
     string ans = "";
 
@@ -18,9 +18,23 @@ string convertToBinary(int n)
     return ans;
 }
 
+int convertToBinaryInt(int n)
+{
+    string ans = "";
+
+    while (n)
+    {
+        ans = to_string(n % 2) + ans;
+
+        n = n / 2;
+    }
+
+    return stoi(ans);
+}
+
 int main()
 {
-    cout << convertToBinary(7);
+    cout << convertToBinaryInt(7);
 
     cout << endl;
     return 0;
