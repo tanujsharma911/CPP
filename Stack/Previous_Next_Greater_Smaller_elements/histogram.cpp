@@ -2,7 +2,7 @@
 84. Largest Rectangle in Histogram
 Link:- https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
-Given an array of integers heights representing the histogram's bar height where 
+Given an array of integers heights representing the histogram's bar height where
 the width of each bar is 1, return the area of the largest rectangle in the histogram.
 
 revised: 1
@@ -13,71 +13,79 @@ revised: 1
 
 using namespace std;
 
-int largestRectangleArea(vector<int> heights)
-{
-    vector<int> nextSmaller(heights.size(), 0);
-    stack<int> nextSmallerStack;
+class Solution {
+public:
+    vector<int> findPSE(vector<int>& heights){
+        int n = heights.size();
 
-    vector<int> prevSmaller(heights.size(), 0);
-    stack<int> prevSmallerStack;
+        stack<int> pse;
+        vector<int> ans(n, 0);
 
-    for (int i = heights.size() - 1; i >= 0; i--)
-    { // finding next smaller element index
-        while (!nextSmallerStack.empty() && heights[nextSmallerStack.top()] >= heights[i])
-        {
-            nextSmallerStack.pop();
+        for(int i = 0; i < n; i++){
+            int el = heights[i];
+
+            while(!pse.empty() && heights[pse.top()] >= el){
+                pse.pop();
+            }
+
+            if(pse.empty()){
+                ans[i] = -1;
+            }
+            else {
+                ans[i] = pse.top();
+            }
+
+            pse.push(i);
         }
 
-        if (nextSmallerStack.empty())
-        {
-            nextSmaller[i] = -1;
-        }
-        else
-        {
-            nextSmaller[i] = nextSmallerStack.top();
-        }
-
-        nextSmallerStack.push(i);
+        return ans;
     }
+    vector<int> findNSE(vector<int>& heights){
+        int n = heights.size();
 
-    for (int i = 0; i < heights.size(); i++)
-    { // finding prev smaller element index
-        while (!prevSmallerStack.empty() && heights[prevSmallerStack.top()] >= heights[i])
-        {
-            prevSmallerStack.pop();
+        stack<int> nse;
+        vector<int> ans(n, 0);
+
+        for(int i = n - 1; i >= 0; i--){
+            int el = heights[i];
+
+            while(!nse.empty() && heights[nse.top()] >= el){
+                nse.pop();
+            }
+
+            if(nse.empty()){
+                ans[i] = n;
+            }
+            else {
+                ans[i] = nse.top();
+            }
+
+            nse.push(i);
         }
 
-        if (prevSmallerStack.empty())
-        {
-            prevSmaller[i] = -1;
-        }
-        else
-        {
-            prevSmaller[i] = prevSmallerStack.top();
-        }
-
-        prevSmallerStack.push(i);
+        return ans;
     }
+    int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
 
-    int ans = 0;
+        vector<int> nse = findNSE(heights);
+        vector<int> pse = findPSE(heights);
 
-    for (int i = 0; i < heights.size(); i++)
-    {
-        int left = (prevSmaller[i] == -1) ? 0 : prevSmaller[i];
-        int right = (nextSmaller[i] == -1) ? heights.size() : nextSmaller[i];
+        int largestArea = 0;
 
-        int currSum = heights[i] * (right - left - 1);
-        ans = max(ans, currSum);
+        for(int i = 0; i < n ; i++){
+            int breath = nse[i] - pse[i] - 1;
+            int height = heights[i];
+
+            largestArea = max(largestArea, breath * height);
+        }
+
+        return largestArea;
     }
-
-    return ans;
-}
+};
 
 int main()
 {
-    vector<int> v = {2, 1, 5, 6, 2, 3};
-
-    cout << "Ans: " << largestRectangleArea(v) << endl;
 
     return 0;
 }
