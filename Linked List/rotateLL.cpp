@@ -26,7 +26,6 @@ void push_back(int data)
     }
     else
     {
-        // newNode->next = head;
         tail->next = newNode;
         tail = newNode;
     }
