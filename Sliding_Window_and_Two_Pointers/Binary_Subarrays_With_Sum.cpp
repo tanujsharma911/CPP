@@ -28,24 +28,20 @@ public:
   int numSubarraysWithSum(vector<int> &nums, int goal) {
     int n = nums.size();
 
+    int currSum = 0;
+    vector<int> map(n + 1, 0);
+    map[0] = 1;
+
     int result = 0;
 
-    vector<int> prefix_sum(n, 0);
+    for (auto x : nums) {
+      currSum += x;
 
-    prefix_sum[0] = nums[0];
-
-    for (int i = 1; i < n; i++) {
-      prefix_sum[i] = prefix_sum[i - 1] + nums[i];
-    }
-
-    for (int i = 0; i < n; i++) {
-
-      for (int j = i; j < n; j++) {
-
-        if (prefix_sum[i] - prefix_sum[j] == goal) {
-          result++;
-        }
+      if (currSum - goal >= 0) {
+        result += map[currSum - goal];
       }
+
+      map[currSum]++;
     }
 
     return result;
@@ -73,8 +69,6 @@ For i = 0:
 
 int main() {
   Solution s;
-
-  
 
   vector<int> nums = {1, 0, 1, 0, 1};
 
