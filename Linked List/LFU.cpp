@@ -204,6 +204,9 @@ public:
   }
 
   void put(int key, int value) {
+    if (capacity == 0)
+      return;
+
     if (!valueMap.count(key)) {
       if (valueMap.size() == capacity) {
         freeup_space();
