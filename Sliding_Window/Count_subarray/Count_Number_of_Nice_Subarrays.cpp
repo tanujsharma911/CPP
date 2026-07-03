@@ -9,9 +9,7 @@ Return the number of nice sub-arrays.
 
 */
 
-#include <algorithm>
 #include <iostream>
-#include <numeric>
 
 using namespace std;
 

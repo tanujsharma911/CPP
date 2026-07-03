@@ -25,26 +25,27 @@ using namespace std;
 
 class Solution {
 public:
-  int numSubarraysWithSum(vector<int> &nums, int goal) {
+  int helper(vector<int> &nums, int goal) {
     int n = nums.size();
 
-    int currSum = 0;
-    vector<int> map(n + 1, 0);
-    map[0] = 1;
+    int l = 0, r = 0, currSum = 0, cnt = 0;
 
-    int result = 0;
+    while (r < n) {
+      currSum += nums[r];
 
-    for (auto x : nums) {
-      currSum += x;
-
-      if (currSum - goal >= 0) {
-        result += map[currSum - goal];
+      while (l <= r && currSum > goal) {
+        currSum -= nums[l];
+        l++;
       }
 
-      map[currSum]++;
+      cnt += r - l + 1;
+      r++;
     }
 
-    return result;
+    return cnt;
+  }
+  int numSubarraysWithSum(vector<int> &nums, int goal) {
+    return helper(nums, goal) - helper(nums, goal - 1);
   }
 };
 
