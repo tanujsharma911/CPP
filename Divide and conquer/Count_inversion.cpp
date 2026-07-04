@@ -18,7 +18,6 @@ Output: 0
 Explanation: As all the elements of array are same, so there is no inversion count.
 */
 
-#include <algorithm>
 #include <iostream>
 using namespace std;
 
