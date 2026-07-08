@@ -16,7 +16,6 @@ The longest common prefix is 100 with a length of 3.
 
 #include <iostream>
 #include <unordered_set>
-#include <numeric>
 #include <algorithm>
 
 using namespace std;
