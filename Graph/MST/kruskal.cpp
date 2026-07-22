@@ -1,3 +1,9 @@
+/*
+
+Greedy algo to find MST value of graph using disjoint set
+
+*/
+
 #include <iostream>
 
 using namespace std;
