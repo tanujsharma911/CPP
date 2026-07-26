@@ -9,34 +9,6 @@ using namespace std;
 class Solution
 {
 public:
-    // bool tryAllPermutation(int i, int mass, vector<int>& asteroids){
-    //     int n = asteroids.size();
-
-    //     if(i == n){
-    //         for(int j = 0; j < n; j++){
-    //             if(mass < asteroids[j]){
-    //                 return false;
-    //             }
-    //             mass += asteroids[j];
-    //         }
-
-    //         return true;
-    //     }
-
-    //     bool isDestroyed = false;
-
-    //     for(int j = i; j < n; j++){
-    //         swap(asteroids[i], asteroids[j]);
-
-    //         if(tryAllPermutation(i + 1, mass, asteroids)){
-    //             isDestroyed = true;
-    //         }
-
-    //         swap(asteroids[i], asteroids[j]);
-    //     }
-
-    //     return isDestroyed;
-    // }
     bool asteroidsDestroyed(int mass, vector<int> &asteroids)
     {
         int n = asteroids.size();
