@@ -1701,24 +1701,20 @@ class Zobrist {
         0xF8D626AAAF278509};
 
     static constexpr std::array<U64, 16> castlingKey = []() constexpr {
-        auto generateCastlingKey = [](int index) constexpr -> U64 {
-            constexpr int RANDOM_OFFSET = 768;
-            constexpr int RANDOM_COUNT  = 4;
+        constexpr int RANDOM_OFFSET = 768;
+        constexpr int RANDOM_COUNT  = 4;
 
+        std::array<U64, 16> arr{};
+
+        for (int index = 0; index < 16; ++index) {
             U64 key = 0;
-
             for (int i = 0; i < RANDOM_COUNT; ++i) {
                 if (index & (1 << i)) {
                     key ^= RANDOM_ARRAY[RANDOM_OFFSET + i];
                 }
             }
-
-            return key;
-        };
-
-        std::array<U64, 16> arr{};
-
-        for (int i = 0; i < 16; ++i) arr[i] = generateCastlingKey(i);
+            arr[index] = key;
+        }
 
         return arr;
     }();

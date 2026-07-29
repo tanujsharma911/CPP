@@ -1,3 +1,5 @@
+// clang++ -std=c++20 game.cpp -o game
+
 #include "chess.hpp"
 #include <cstdlib>
 
