@@ -17,21 +17,18 @@ private:
 
     pair<int, int> build(int idx, int low, int high, vector<int> &arr)
     {
-
         if (low == high)
         {
-            seg[idx].first = arr[low];
-            seg[idx].second = arr[low];
-
-            return {arr[low], arr[low]};
+            seg[idx] = {arr[low], arr[low]};
+            return seg[idx];
         }
 
         int mid = (low + high) / 2;
-
         pair<int, int> left = build(2 * idx + 1, low, mid, arr);
         pair<int, int> right = build(2 * idx + 2, mid + 1, high, arr);
 
-        return {min(left.first, right.first), max(left.second, right.second)};
+        seg[idx] = {min(left.first, right.first), max(left.second, right.second)};
+        return seg[idx];
     }
 
     pair<int, int> getAnsUtil(int idx, int r_low, int r_high, int q_low, int q_high)
