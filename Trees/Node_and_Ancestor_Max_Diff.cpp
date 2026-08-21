@@ -11,17 +11,19 @@ node A and its descendant node B, i.e., maximize A - B.
 
 using namespace std;
 
-/* Structure of Binary Tree Node
-class Node {
-  public:
+/* Structure of Binary Tree Node */
+class Node
+{
+public:
   int data;
   Node *left;
   Node *right;
-  Node(int val) {
+  Node(int val)
+  {
     data = val;
     left = right = nullptr;
   }
-}; */
+};
 
 class Solution
 {
